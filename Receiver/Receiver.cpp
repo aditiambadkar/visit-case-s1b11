@@ -9,7 +9,7 @@ using namespace std;
 
 Receiver::Receiver() {}
 
-Receiver::Receiver(int d, int m, int y, double ha) : date(d), month(m), year(y), hourlyAverage(ha) {}
+Receiver::Receiver(int d, int m, int y, float ha) : date(d), month(m), year(y), hourlyAverage(ha) {}
 
 void Receiver::readSenderData()
 {
@@ -58,7 +58,10 @@ void Receiver::averageFootfallsPerHourDaily()
 		{
 			receiverObj.hourlyAverage = receiverObj.hourlyAverage / 4;
 			hourlyAverageDailyData.push_back(receiverObj);
-			receiverObj(footfallData[i][5], footfallData[i][6], footfallData[i][7], 0.0);
+			receiverObj.date = footfallData[i][5];
+			receiverObj.month = footfallData[i][6];
+			receiverObj.year = footfallData[i][7];
+			receiverObj.hourlyAverage = 0;
 			i--;
 		}
 	}
