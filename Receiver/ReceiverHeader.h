@@ -8,15 +8,15 @@ class Receiver
 {
 private:
 	vector<Receiver> footfallData;
-	int id;
-	int hour;
-	int minute;
-	int second;
-	int day;
+	int id = 0;
+	int hour = 0;
+	int minute = 0;
+	int second = 0;
+	int day = 0;
 	int date;
 	int month;
 	int year;
-	float hourlyAverage;
+	float hourlyAverage = 0;
 public:
 	Receiver();
 	Receiver(int, int, int, float);
