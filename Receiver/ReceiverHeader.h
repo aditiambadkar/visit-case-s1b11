@@ -10,7 +10,7 @@ private:
 	vector<vector<int>> footfallData;
 public:
 	void storeFootfallData(const string&);
-	//float averageFootfallsPerHourDaily();
+	void averageFootfallsPerHourDaily();
 	//float averageDailyFootfallsWeekly();
 	//float peakDailyFootfallLastMonth();
 };
