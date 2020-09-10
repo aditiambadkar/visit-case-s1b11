@@ -9,6 +9,8 @@ using namespace std;
 
 Receiver::Receiver() {}
 
+Receiver::Receiver(int i, int hr, int min, int sec, int dy, int dt, int mon, int yr) : id(i), hour(hr), minute(min), second(sec), day(dy), date(dt), month(mon), year(yr) {}
+
 Receiver::Receiver(int d, int m, int y, float ha) : date(d), month(m), year(y), hourlyAverage(ha) {}
 
 void Receiver::readSenderData()
@@ -32,9 +34,11 @@ void Receiver::storeFootfallData(const string& footfallRecordString)
 	{
 		footfallRecord.push_back(stoi(footfallElement));
 	}
+	
 	cout << "Record Pushed" << endl;
 	cout << footfallRecord.size() << endl;
-	footfallData.push_back(footfallRecord);
+	Receiver receiverObj(footfallRecord[0], footfallRecord[1], footfallRecord[2], footfallRecord[3], footfallRecord[4], footfallRecord[5], footfallRecord[6], footfallRecord[7]);
+	footfallData.push_back(receiverObj);
 }
 
 void Receiver::averageFootfallsPerHourDaily()
@@ -47,10 +51,10 @@ void Receiver::averageFootfallsPerHourDaily()
 	}
 	fout.close();*/
 	vector<Receiver> hourlyAverageDailyData;
-	Receiver receiverObj(footfallData[0][5], footfallData[0][6], footfallData[0][7], 0);
+	Receiver receiverObj(footfallData[0].date, footfallData[0].month, footfallData[0].year, 0);
 	for(unsigned int i = 0; i < footfallData.size(); i++)
 	{
-		if(receiverObj.date == footfallData[i][5])
+		if(receiverObj.date == footfallData[i].date)
 		{
 			receiverObj.hourlyAverage += 1;
 		}
@@ -58,9 +62,9 @@ void Receiver::averageFootfallsPerHourDaily()
 		{
 			receiverObj.hourlyAverage = receiverObj.hourlyAverage / 4;
 			hourlyAverageDailyData.push_back(receiverObj);
-			receiverObj.date = footfallData[i][5];
-			receiverObj.month = footfallData[i][6];
-			receiverObj.year = footfallData[i][7];
+			receiverObj.date = footfallData[i].date;
+			receiverObj.month = footfallData[i].month;
+			receiverObj.year = footfallData[i].year;
 			receiverObj.hourlyAverage = 0;
 			i--;
 		}
