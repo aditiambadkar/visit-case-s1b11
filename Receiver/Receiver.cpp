@@ -28,6 +28,7 @@ void Receiver::averageFootfallsPerHourDaily()
 	if(fout.is_open())
 	{
 		cout << "File created" << endl;
+		fout << "hello" << "123" <<"\n";
 	}
 	return;
 }
