@@ -25,6 +25,6 @@ public:
 	void storeFootfallData(const string&);
 	void averageFootfallsPerHourDaily();
 	void displayhourlyAverageDailyData(vector<Receiver>);
-	//float averageDailyFootfallsWeekly();
+	void averageDailyFootfallsWeekly();
 	//float peakDailyFootfallLastMonth();
 };
