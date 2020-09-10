@@ -7,10 +7,6 @@ int main()
 {
   string footfallRecordString;
   ifstream fin("test-data/Visit Count Data.csv");
-	if (fin.is_open())
-	{
-		cout << "file open" << endl;
-	}
 
 	if (fin.good())
 	{
