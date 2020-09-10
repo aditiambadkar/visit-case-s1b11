@@ -17,14 +17,17 @@ private:
 	int month;
 	int year;
 	float hourlyAverage = 0;
+	float weeklyAverage = 0;
 public:
 	Receiver();
 	Receiver(int, int, int, float);
+	Receiver(int, int, int, int, float);
 	Receiver(int, int, int, int, int, int, int, int);
 	void readSenderData();
 	void storeFootfallData(const string&);
 	void averageFootfallsPerHourDaily();
-	void displayhourlyAverageDailyData(vector<Receiver>);
+	void displayHourlyAverageDailyData(vector<Receiver>);
+	void displayDailyAverageWeeklyData(vector<Receiver>);
 	void averageDailyFootfallsWeekly();
 	//float peakDailyFootfallLastMonth();
 };
