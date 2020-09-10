@@ -9,6 +9,7 @@ class Receiver
 private:
 	vector<vector<int>> footfallData;
 public:
+	void readSenderData();
 	void storeFootfallData(const string&);
 	void averageFootfallsPerHourDaily();
 	//float averageDailyFootfallsWeekly();
