@@ -37,7 +37,7 @@ void Receiver::storeFootfallData(const string& footfallRecordString)
 	footfallData.push_back(footfallRecord);
 }
 
-vector<Receiver> Receiver::averageFootfallsPerHourDaily()
+void Receiver::averageFootfallsPerHourDaily()
 {
 	/*ofstream fout("test-data/Average Hourly Footfalls Daily.csv", ios::app);
 	if(fout.is_open())
@@ -68,7 +68,16 @@ vector<Receiver> Receiver::averageFootfallsPerHourDaily()
 	receiverObj.hourlyAverage = receiverObj.hourlyAverage / 4;
 	hourlyAverageDailyData.push_back(receiverObj);
 	
-	return hourlyAverageDailyData;
+	displayhourlyAverageDailyData(hourlyAverageDailyData);
+}
+
+void Receiver::displayhourlyAverageDailyData(vector<Receiver> hourlyAverageDailyData)
+{
+	cout<<"Date "<<"Month "<<"Year "<<" Hourly Avg"<<endl;
+	for(unsigned int i = 0; i < hourlyAverageDailyData.size(); i++)
+	{
+		cout<<hourlyAverageDailyData[i].date<<" "<<hourlyAverageDailyData[i].month<<" "<<hourlyAverageDailyData[i].year<<" "<<hourlyAverageDailyData[i].hourlyAverage<<endl;
+	}
 }
 
 int main()
@@ -78,13 +87,7 @@ int main()
 	cout << "In receiver main" << endl;
 	
 	receiverObj.readSenderData();
-	vector<Receiver> hourlyAverageDailyData = receiverObj.averageFootfallsPerHourDaily();
-	
-	cout<<"Date "<<"Month "<<"Year "<<" Hourly Avg"<<endl;
-	for(unsigned int i = 0; i < hourlyAverageDailyData.size(); i++)
-	{
-		cout<<hourlyAverageDailyData[i].date<<" "<<hourlyAverageDailyData[i].month<<" "<<hourlyAverageDailyData[i].year<<" "<<hourlyAverageDailyData[i].hourlyAverage<<endl;
-	}
+	receiverObj.averageFootfallsPerHourDaily();
 	
 	return 0;
 }
