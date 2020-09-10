@@ -74,13 +74,13 @@ void Receiver::averageFootfallsPerHourDaily()
 	receiverObj.hourlyAverage = receiverObj.hourlyAverage / 4;
 	hourlyAverageDailyData.push_back(receiverObj);
 	
-	displayhourlyAverageDailyData(hourlyAverageDailyData);
+	displayHourlyAverageDailyData(hourlyAverageDailyData);
 }
 
 void Receiver::averageDailyFootfallsWeekly()
 {
 	vector<Receiver> dailyAverageWeeklyData;
-	Receiver receiverObj(footfallData[0].day footfallData[0].date, footfallData[0].month, footfallData[0].year, 0);
+	Receiver receiverObj(footfallData[0].day, footfallData[0].date, footfallData[0].month, footfallData[0].year, 0);
 	int flag;
 	if(receiverObj.day == 1)
 	{
