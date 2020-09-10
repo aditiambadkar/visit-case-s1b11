@@ -33,7 +33,6 @@ int main()
 		cout << footfallRecordString << endl;
 		receiverObj.storeFootfallData(footfallRecordString);
 	}
-
 	fin.close();
 
 	return 0;
