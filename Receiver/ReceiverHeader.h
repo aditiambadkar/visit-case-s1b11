@@ -19,8 +19,8 @@ private:
 	float hourlyAverage;
 public:
 	Receiver();
-	Receiver(int, int, int, int, int, int, int, int);
 	Receiver(int, int, int, float);
+	Receiver(int, int, int, int, int, int, int, int);
 	void readSenderData();
 	void storeFootfallData(const string&);
 	void averageFootfallsPerHourDaily();
