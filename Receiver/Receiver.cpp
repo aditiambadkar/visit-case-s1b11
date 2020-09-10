@@ -47,7 +47,7 @@ void Receiver::averageFootfallsPerHourDaily()
 	}
 	fout.close();*/
 	vector<Receiver> hourlyAverageDailyData;
-	Receiver receiverObj(footfallData[0][5], footfallData[0][6], footfallData[0][7], 0.0);
+	Receiver receiverObj(footfallData[0][5], footfallData[0][6], footfallData[0][7], 0);
 	for(unsigned int i = 0; i < footfallData.size(); i++)
 	{
 		if(receiverObj.date == footfallData[i][5])
@@ -58,7 +58,7 @@ void Receiver::averageFootfallsPerHourDaily()
 		{
 			receiverObj.hourlyAverage = receiverObj.hourlyAverage / 4;
 			hourlyAverageDailyData.push_back(receiverObj);
-			receiverObj(footfallData[i][5], footfallData[i][6], footfallData[i][7], 0.0);
+			receiverObj(footfallData[i][5], footfallData[i][6], footfallData[i][7], 0);
 			i--;
 		}
 	}
