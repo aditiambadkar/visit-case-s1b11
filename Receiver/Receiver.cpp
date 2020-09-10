@@ -150,6 +150,7 @@ int main()
 	
 	receiverObj.readSenderData();
 	receiverObj.averageFootfallsPerHourDaily();
+	receiverObj.averageDailyFootfallsWeekly();
 	
 	return 0;
 }
