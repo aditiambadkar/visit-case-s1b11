@@ -1,8 +1,29 @@
-#include<iostream>
+#include <iostream>
+#include <fstream>
+#include <string>
 using namespace std;
 
 int main()
 {
-  cout<<"Sending message from Sender"<<endl;
-  return 0;
-}  
+  string footfallRecordString;
+  ifstream fin("test-data/Visit Count Data.csv");
+	if (fin.is_open())
+	{
+		cout << "file open" << endl;
+	}
+
+	if (fin.good())
+	{
+		getline(fin, footfallRecordString);
+		cout << footfallRecordString << endl;
+	}
+
+	while (getline(fin, footfallRecordString))
+	{
+		cout << footfallRecordString << endl;
+	}
+
+	fin.close();
+
+	return 0;
+}
