@@ -7,6 +7,10 @@
 
 using namespace std;
 
+Receiver::Receiver() {}
+
+Receiver::Receiver(int d, int m, int y, float ha) : date(d), month(m), year(y), hourlyAverage(ha) {}
+
 void Receiver::readSenderData()
 {
 	string footfallRecordString;
@@ -35,13 +39,18 @@ void Receiver::storeFootfallData(const string& footfallRecordString)
 
 void Receiver::averageFootfallsPerHourDaily()
 {
-	ofstream fout("test-data/Average Hourly Footfalls Daily.csv", ios::app);
+	/*ofstream fout("test-data/Average Hourly Footfalls Daily.csv", ios::app);
 	if(fout.is_open())
 	{
 		cout << "File created" << endl;
 		fout << "11" << ", " << "123" << ", " << "45" <<"\n";
 	}
-	fout.close();
+	fout.close();*/
+	
+	for(int i = 0; i < footfallData.size(); i++)
+	{
+		
+	}
 }
 
 int main()
