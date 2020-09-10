@@ -7,13 +7,19 @@ using namespace std;
 class Receiver
 {
 private:
-	vector<vector<int>> footfallData;
+	vector<Receiver> footfallData;
+	int id;
+	int hour;
+	int minute;
+	int second;
+	int day;
 	int date;
 	int month;
 	int year;
 	float hourlyAverage;
 public:
 	Receiver();
+	Receiver(int, int, int, int, int, int, int, int);
 	Receiver(int, int, int, float);
 	void readSenderData();
 	void storeFootfallData(const string&);
