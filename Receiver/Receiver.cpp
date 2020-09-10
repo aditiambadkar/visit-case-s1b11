@@ -46,10 +46,29 @@ void Receiver::averageFootfallsPerHourDaily()
 		fout << "11" << ", " << "123" << ", " << "45" <<"\n";
 	}
 	fout.close();*/
-	
+	vector<Receiver> hourlyAverageDailyData;
+	Receiver receiverObj(footfallData[0][5], footfallData[0][6], footfallData[0][7], 0);
 	for(unsigned int i = 0; i < footfallData.size(); i++)
 	{
-		
+		if(receiverObj.date == footfallData[i][5])
+		{
+			receiverObj.hourlyAverage += 1;
+		}
+		else
+		{
+			receiverObj.hourlyAverage = receiverObj.hourlyAverage / 4;
+			hourlyAverageDailyData.push_back(receiverObj);
+			receiverObj(footfallData[i][5], footfallData[i][6], footfallData[i][7], 0);
+			i--;
+		}
+	}
+	receiverObj.hourlyAverage = receiverObj.hourlyAverage / 4;
+	hourlyAverageDailyData.push_back(receiverObj);
+	
+	cout<<"Date "<<"Month "<<"Year "<<" Hourly Avg"<<endl;
+	for(int i = 0; i < hourlyAverageDailyData.size(); i++)
+	{
+		cout<<hourlyAverageDailyData[i].date<<" "<<hourlyAverageDailyData[i].month<<" "<<hourlyAverageDailyData[i].year<<" "<<hourlyAverageDailyData[i].hourlyAverage<<endl;
 	}
 }
 
