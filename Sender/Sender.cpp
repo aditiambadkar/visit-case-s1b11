@@ -14,13 +14,10 @@ int main()
 
 	if (fin.good())
 	{
-		getline(fin, footfallRecordString);
-		cout << footfallRecordString << endl;
-	}
-
-	while (getline(fin, footfallRecordString))
-	{
-		cout << footfallRecordString << endl;
+		while (getline(fin, footfallRecordString))
+		{
+			cout << footfallRecordString << endl;
+		}	
 	}
 
 	fin.close();
