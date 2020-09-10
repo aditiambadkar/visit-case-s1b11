@@ -81,15 +81,8 @@ void Receiver::averageDailyFootfallsWeekly()
 {
 	vector<Receiver> dailyAverageWeeklyData;
 	Receiver receiverObj(footfallData[0].day, footfallData[0].date, footfallData[0].month, footfallData[0].year, 0);
-	int flag;
-	if(receiverObj.day == 1)
-	{
-		flag = 0;
-	}
-	else
-	{
-		flag = 1;
-	}
+	int flag = 0;
+
 	for(unsigned int i = 0; i < footfallData.size(); i++)
 	{
 		if(footfallData[i].day != flag)
