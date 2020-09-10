@@ -17,6 +17,7 @@ void Receiver::storeFootfallData(const string& footfallRecordString)
 		footfallRecord.push_back(stoi(footfallElement));
 	}
 	cout << "Record Pushed" << endl;
+	cout << footfallRecord.size() << endl;
 	footfallData.push_back(footfallRecord);
 }
 
