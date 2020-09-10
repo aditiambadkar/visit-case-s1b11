@@ -15,7 +15,6 @@ void Receiver::storeFootfallData(const string& footfallRecordString)
 	while (getline(footfallStream, footfallElement, ','))
 	{
 		footfallRecord.push_back(stoi(footfallElement));
-		cout << "Element extracted" << endl;
 	}
 	cout << "Record Pushed" << endl;
 	footfallData.push_back(footfallRecord);
