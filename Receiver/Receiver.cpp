@@ -11,6 +11,8 @@ Receiver::Receiver() {}
 
 Receiver::Receiver(int d, int m, int y, float ha) : date(d), month(m), year(y), hourlyAverage(ha) {}
 
+Receiver::Receiver(int dy, int dt, int m, int y, float wa) : day(dy), date(dt), month(m), year(y), weeklyAverage(wa) {}
+
 Receiver::Receiver(int i, int hr, int min, int sec, int dy, int dt, int mon, int yr) : id(i), hour(hr), minute(min), second(sec), day(dy), date(dt), month(mon), year(yr) {}
 
 void Receiver::readSenderData()
@@ -75,12 +77,68 @@ void Receiver::averageFootfallsPerHourDaily()
 	displayhourlyAverageDailyData(hourlyAverageDailyData);
 }
 
-void Receiver::displayhourlyAverageDailyData(vector<Receiver> hourlyAverageDailyData)
+void Receiver::averageDailyFootfallsWeekly()
+{
+	vector<Receiver> dailyAverageWeeklyData;
+	Receiver receiverObj(footfallData[0].day footfallData[0].date, footfallData[0].month, footfallData[0].year, 0);
+	int flag;
+	if(receiverObj.day == 1)
+	{
+		flag = 0;
+	}
+	else
+	{
+		flag = 1;
+	}
+	for(unsigned int i = 0; i < footfallData.size(); i++)
+	{
+		if(footfallData[i].day != flag)
+		{
+			receiverObj.weeklyAverage += 1;
+			if(footfallData[i].day == 1)
+			{
+				flag = 0;
+			}
+			else
+			{
+				flag = 1;
+			}
+		}
+		else
+		{
+			receiverObj.weeklyAverage = receiverObj.weeklyAverage / 7;
+			dailyAverageWeeklyData.push_back(receiverObj);
+			receiverObj.day = footfallData[i].day;
+			receiverObj.date = footfallData[i].date;
+			receiverObj.month = footfallData[i].month;
+			receiverObj.year = footfallData[i].year;
+			receiverObj.weeklyAverage = 0;
+			flag = 0;
+			i--;	
+		}
+	}
+	receiverObj.weeklyAverage = receiverObj.weeklyAverage / 7;
+	dailyAverageWeeklyData.push_back(receiverObj);
+	
+	displayDailyAverageWeeklyData(dailyAverageWeeklyData);
+}
+
+
+void Receiver::displayHourlyAverageDailyData(vector<Receiver> hourlyAverageDailyData)
 {
 	cout<<"Date "<<"Month "<<"Year "<<" Hourly Avg"<<endl;
 	for(unsigned int i = 0; i < hourlyAverageDailyData.size(); i++)
 	{
 		cout<<hourlyAverageDailyData[i].date<<" "<<hourlyAverageDailyData[i].month<<" "<<hourlyAverageDailyData[i].year<<" "<<hourlyAverageDailyData[i].hourlyAverage<<endl;
+	}
+}
+
+void Receiver::displayDailyAverageWeeklyData(vector<Receiver> dailyAverageWeeklyData)
+{
+	cout<<"Date "<<"Month "<<"Year "<<" Weekly Avg"<<endl;
+	for(unsigned int i = 0; i < dailyAverageWeeklyData.size(); i++)
+	{
+		cout<<dailyAverageWeeklyData[i].date<<" "<<dailyAverageWeeklyData[i].month<<" "<<dailyAverageWeeklyData[i].year<<" "<<dailyAverageWeeklyData[i].weeklyAverage<<endl;
 	}
 }
 
