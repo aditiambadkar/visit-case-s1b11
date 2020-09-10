@@ -11,10 +11,10 @@ private:
 	int date;
 	int month;
 	int year;
-	double hourlyAverage;
+	float hourlyAverage;
 public:
 	Receiver();
-	Receiver(int, int, int, double);
+	Receiver(int, int, int, float);
 	void readSenderData();
 	void storeFootfallData(const string&);
 	void averageFootfallsPerHourDaily();
