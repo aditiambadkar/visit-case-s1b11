@@ -58,7 +58,7 @@ void Receiver::averageFootfallsPerHourDaily()
 		{
 			receiverObj.hourlyAverage = receiverObj.hourlyAverage / 4;
 			hourlyAverageDailyData.push_back(receiverObj);
-			receiverObj(footfallData[i][5], footfallData[i][6], footfallData[i][7], 0);
+			receiverObj(footfallData[i][5], footfallData[i][6], footfallData[i][7], 0.0);
 			i--;
 		}
 	}
