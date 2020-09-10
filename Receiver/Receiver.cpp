@@ -21,6 +21,14 @@ void Receiver::storeFootfallData(const string& footfallRecordString)
 	footfallData.push_back(footfallRecord);
 }
 
+void Receiver::averageFootfallsPerHourDaily()
+{
+	fstream fout;
+	fout.open("test-data/Average Hourly Footfalls Daily.csv", ios::out, ios::app);
+	cout << "File created" << endl;
+	return;
+}
+
 int main()
 {
 	Receiver receiverObj;
@@ -34,5 +42,7 @@ int main()
 		receiverObj.storeFootfallData(footfallRecordString);
 	}
 
+	receiverObj.averageFootfallsPerHourDaily();
+	
 	return 0;
 }
