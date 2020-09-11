@@ -37,4 +37,4 @@ public:
 	void displayPeakDailyFootfallLastMonth(vector<Receiver>);
 };
 
-bool testAverageFootfallsPerHourDaily(const char*);
+bool testAverageFootfallsPerHourDaily();
