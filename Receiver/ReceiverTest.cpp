@@ -4,5 +4,5 @@
 #include "ReceiverHeader.h"
 
 TEST_CASE("Average footfalls per hour day wise") {
-    REQUIRE(testAverageFootfallsPerHourDaily("test-data/Average Footfalls Hourly Test.csv") == true);
+    REQUIRE(ReceiverNamespace::testAverageFootfallsPerHourDaily("test-data/Average Footfalls Hourly Test.csv") == true);
 }
