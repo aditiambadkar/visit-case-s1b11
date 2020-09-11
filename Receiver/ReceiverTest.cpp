@@ -4,6 +4,6 @@
 #include "ReceiverHeader.h"
 
 TEST_CASE("Average footfalls per hour day wise") {
-    string testFileName = "test-data/Average Footfalls Hourly Test.csv";
+    const char* testFileName = "test-data/Average Footfalls Hourly Test.csv";
     REQUIRE(testAverageFootfallsPerHourDaily(testFileName) == true);
 }
