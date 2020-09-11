@@ -208,7 +208,7 @@ void Receiver::displayPeakDailyFootfallLastMonth(vector<Receiver> peakDailyFootf
 	}
 }
 
-bool ReceiverNamespace::testAverageFootfallsPerHourDaily(const string& fileName)
+bool testAverageFootfallsPerHourDaily(const string& fileName)
 {
 	ifstream testFile(fileName);
 	ifstream resultFile("test-data/Average Footfalls Hourly.csv");
