@@ -77,6 +77,13 @@ void Receiver::averageFootfallsPerHourDaily()
 	displayHourlyAverageDailyData(hourlyAverageDailyData);
 }
 
+int Receiver::setFlagStatus(int day)
+{
+	if(day == 1)
+		return 0;
+	return 1;
+}
+
 void Receiver::averageDailyFootfallsWeekly()
 {
 	vector<Receiver> dailyAverageWeeklyData;
@@ -88,14 +95,7 @@ void Receiver::averageDailyFootfallsWeekly()
 		if(footfallData[i].day != flag)
 		{
 			receiverObj.weeklyAverage += 1;
-			if(footfallData[i].day == 1)
-			{
-				flag = 0;
-			}
-			else
-			{
-				flag = 1;
-			}
+			flag = setFlagStatus(footfallData[i].day);
 		}
 		else
 		{
