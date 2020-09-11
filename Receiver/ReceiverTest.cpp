@@ -4,5 +4,6 @@
 #include "ReceiverHeader.h"
 
 TEST_CASE("Average footfalls per hour day wise") {
-    REQUIRE(ReceiverNamespace::testAverageFootfallsPerHourDaily() == true);
+    Receiver obj;
+    REQUIRE(obj.testAverageFootfallsPerHourDaily() == true);
 }
