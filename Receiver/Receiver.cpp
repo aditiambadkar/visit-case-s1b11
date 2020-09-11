@@ -226,7 +226,7 @@ int main()
 	
 	receiverObj.readSenderData();
 	receiverObj.averageFootfallsPerHourDaily();
-	ReceiverNamespace::testAverageFootfallsPerHourDaily("test-data/Average Footfalls Hourly Test.csv");
+	testAverageFootfallsPerHourDaily("test-data/Average Footfalls Hourly Test.csv");
 	receiverObj.averageDailyFootfallsWeekly();
 	receiverObj.peakDailyFootfallLastMonth();
 	return 0;
