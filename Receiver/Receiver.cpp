@@ -182,13 +182,13 @@ vector<Receiver> Receiver::getLastMonthFootfallData()
 
 vector<Receiver> Receiver::getPeakDailyFootfallsLastMonth(vector<Receiver> dailyFootfallLastMonthData)
 {
-	sort(dailyFootfallLastMonthData.begin(), dailyFootfallLastMonthData.end(), [](const Receiver& firstObj, const Receiver& secondObj)
+	std::sort(dailyFootfallLastMonthData.begin(), dailyFootfallLastMonthData.end(), [](const Receiver& firstObj, const Receiver& secondObj)
 	{
     		return firstObj.dailyCount > secondObj.dailyCount;
 	});
 	vector<Receiver> peakDailyFootfallsLastMonth;
 	int peakCount = dailyFootfallLastMonthData[0].dailyCount;
-	for(int i = 0; i < dailyFootfallLastMonthData.size(); i++)
+	for(unsigned int i = 0; i < dailyFootfallLastMonthData.size(); i++)
 	{
 		if(peakCount == dailyFootfallLastMonthData[i].dailyCount)
 		{
