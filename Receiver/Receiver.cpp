@@ -208,6 +208,11 @@ void Receiver::displayPeakDailyFootfallLastMonth(vector<Receiver> peakDailyFootf
 	}
 }
 
+bool testAverageFootfallsPerHourDaily(const string& filename)
+{
+	return true;
+}
+
 int main()
 {
 	Receiver receiverObj;
