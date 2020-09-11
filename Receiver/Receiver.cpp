@@ -5,6 +5,7 @@
 #include <sstream>
 #include <vector>
 #include <ctime>
+#include <algorithm>
 
 using namespace std;
 
@@ -182,7 +183,7 @@ vector<Receiver> Receiver::getLastMonthFootfallData()
 
 vector<Receiver> Receiver::getPeakDailyFootfallsLastMonth(vector<Receiver> dailyFootfallLastMonthData)
 {
-	std::sort(dailyFootfallLastMonthData.begin(), dailyFootfallLastMonthData.end(), [](const Receiver& firstObj, const Receiver& secondObj)
+	sort(dailyFootfallLastMonthData.begin(), dailyFootfallLastMonthData.end(), [](const Receiver& firstObj, const Receiver& secondObj)
 	{
     		return firstObj.dailyCount > secondObj.dailyCount;
 	});
