@@ -212,17 +212,10 @@ bool testAverageFootfallsPerHourDaily(const string& fileName)
 {
 	ifstream testFile(fileName);
 	ifstream resultFile("test-data/Average Footfalls Hourly.csv");
-	string testFileString, resultFileString;
-	bool filesMatch = false;
-	while(getline(testFile, testFileString) && getline(resultFile, resultFileString))
-	{
-		if(testFileString != resultFileString)
-		{
-			return false;
-		}
-		filesMatch = true;
-	}
-	return fileMatch;
+        string testFileContent((istreambuf_iterator<char>(testFile)), (std::istreambuf_iterator<char>()));
+	string resultFileContent((istreambuf_iterator<char>(resultFile)), (std::istreambuf_iterator<char>()));
+	
+	return (testFileContent == resultFileContent);
 }
 
 int main()
