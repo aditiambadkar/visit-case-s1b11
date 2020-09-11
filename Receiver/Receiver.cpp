@@ -208,7 +208,7 @@ void Receiver::displayPeakDailyFootfallLastMonth(vector<Receiver> peakDailyFootf
 	}
 }
 
-bool ReceiverNamespace::testAverageFootfallsPerHourDaily()
+bool Receiver::testAverageFootfallsPerHourDaily()
 {
 	ifstream testFile("test-data/Average Footfalls Hourly Test.csv");
 	ifstream resultFile("test-data/Average Footfalls Hourly.csv");
@@ -216,6 +216,7 @@ bool ReceiverNamespace::testAverageFootfallsPerHourDaily()
 	string resultFileContent((istreambuf_iterator<char>(resultFile)), (std::istreambuf_iterator<char>()));
 	testFile.close();
 	resultFile.close();
+	
 	return (testFileContent == resultFileContent);
 }
 
@@ -227,7 +228,7 @@ int main()
 	
 	receiverObj.readSenderData();
 	receiverObj.averageFootfallsPerHourDaily();
-	ReceiverNamespace::testAverageFootfallsPerHourDaily();
+	receiverObj.testAverageFootfallsPerHourDaily();
 	receiverObj.averageDailyFootfallsWeekly();
 	receiverObj.peakDailyFootfallLastMonth();
 	return 0;
