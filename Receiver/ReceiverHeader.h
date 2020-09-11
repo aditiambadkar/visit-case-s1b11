@@ -36,3 +36,5 @@ public:
 	vector<Receiver> getPeakDailyFootfallsLastMonth(vector<Receiver>);
 	void displayPeakDailyFootfallLastMonth(vector<Receiver>);
 };
+
+bool testAverageFootfallsPerHourDaily(const string&);
