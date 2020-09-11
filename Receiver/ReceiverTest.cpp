@@ -2,3 +2,7 @@
 
 #include "catch.hpp"
 #include "ReceiverHeader.h"
+
+TEST_CASE("Average footfalls per hour day wise") {
+    REQUIRE(testAverageFootfallsPerHourDaily("Average Footfalls Hourly.csv") == true);
+}
