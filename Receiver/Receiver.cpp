@@ -1,4 +1,3 @@
-#define CATCH_CONFIG_RUNNER
 #include "ReceiverHeader.h"
 #include <iostream>
 #include <string>
