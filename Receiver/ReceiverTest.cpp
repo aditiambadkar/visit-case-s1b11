@@ -5,5 +5,5 @@
 
 TEST_CASE("Average footfalls per hour day wise") {
     string testFileName = "test-data/Average Footfalls Hourly Test.csv";
-    REQUIRE(ReceiverNamespace::testAverageFootfallsPerHourDaily(testFileName) == true);
+    REQUIRE(testAverageFootfallsPerHourDaily(testFileName) == true);
 }
