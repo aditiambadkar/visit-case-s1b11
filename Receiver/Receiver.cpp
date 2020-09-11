@@ -47,13 +47,6 @@ void Receiver::storeFootfallData(const string& footfallRecordString)
 
 void Receiver::averageFootfallsPerHourDaily()
 {
-	/*ofstream fout("test-data/Average Hourly Footfalls Daily.csv", ios::app);
-	if(fout.is_open())
-	{
-		cout << "File created" << endl;
-		fout << "11" << ", " << "123" << ", " << "45" <<"\n";
-	}
-	fout.close();*/
 	vector<Receiver> hourlyAverageDailyData;
 	Receiver receiverObj(footfallData[0].date, footfallData[0].month, footfallData[0].year, 0);
 	for(unsigned int i = 0; i < footfallData.size(); i++)
@@ -121,11 +114,18 @@ void Receiver::averageDailyFootfallsWeekly()
 
 void Receiver::displayHourlyAverageDailyData(vector<Receiver> hourlyAverageDailyData)
 {
+	ofstream fout("test-data/Average Footfalls Hourly.csv");
 	cout<<"Date "<<"Month "<<"Year "<<" Hourly Avg"<<endl;
-	for(unsigned int i = 0; i < hourlyAverageDailyData.size(); i++)
+	if(fout.is_open())
 	{
-		cout<<hourlyAverageDailyData[i].date<<" "<<hourlyAverageDailyData[i].month<<" "<<hourlyAverageDailyData[i].year<<" "<<hourlyAverageDailyData[i].hourlyAverage<<endl;
+		fout << "Date" << "," << "Month" << "," << "Year" << "," << "HourlyAverage" <<"\n";
+		for(unsigned int i = 0; i < hourlyAverageDailyData.size(); i++)
+		{
+			cout<<hourlyAverageDailyData[i].date<<" "<<hourlyAverageDailyData[i].month<<" "<<hourlyAverageDailyData[i].year<<" "<<hourlyAverageDailyData[i].hourlyAverage<<endl;
+			fout << hourlyAverageDailyData[i].date << "," << hourlyAverageDailyData[i].month << "," << hourlyAverageDailyData[i].year << "," << hourlyAverageDailyData[i].hourlyAverage <<"\n";
+		}
 	}
+	fout.close();
 }
 
 void Receiver::displayDailyAverageWeeklyData(vector<Receiver> dailyAverageWeeklyData)
@@ -208,9 +208,21 @@ void Receiver::displayPeakDailyFootfallLastMonth(vector<Receiver> peakDailyFootf
 	}
 }
 
-bool testAverageFootfallsPerHourDaily(const string& filename)
+bool testAverageFootfallsPerHourDaily(const string& fileName)
 {
-	return true;
+	ifstream testFile(fileName);
+	ifstream resultFile("test-data/Average Footfalls Hourly.csv");
+	string testFileString, resultFileString;
+	bool filesMatch = false;
+	while(getline(testFile, testFileString) && getline(resultFile, resultFileString))
+	{
+		if(testFileString != resultFileString)
+		{
+			return false;
+		}
+		filesMatch = true;
+	}
+	return fileMatch;
 }
 
 int main()
@@ -221,6 +233,7 @@ int main()
 	
 	receiverObj.readSenderData();
 	receiverObj.averageFootfallsPerHourDaily();
+	testAverageFootfallsPerHourDaily("test-data/Average Footfalls Hourly Test.csv");
 	receiverObj.averageDailyFootfallsWeekly();
 	receiverObj.peakDailyFootfallLastMonth();
 	return 0;
