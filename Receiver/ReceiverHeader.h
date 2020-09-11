@@ -35,7 +35,6 @@ public:
 	vector<Receiver> getLastMonthFootfallData();
 	vector<Receiver> getPeakDailyFootfallsLastMonth(vector<Receiver>);
 	void displayPeakDailyFootfallLastMonth(vector<Receiver>);
+	
+	bool testAverageFootfallsPerHourDaily();
 };
-namespace ReceiverNamespace {
-bool testAverageFootfallsPerHourDaily();
-}
