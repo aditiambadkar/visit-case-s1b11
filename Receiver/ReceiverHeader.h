@@ -29,5 +29,6 @@ public:
 	void displayHourlyAverageDailyData(vector<Receiver>);
 	void displayDailyAverageWeeklyData(vector<Receiver>);
 	void averageDailyFootfallsWeekly();
+	int setFlagStatus(int);
 	//float peakDailyFootfallLastMonth();
 };
