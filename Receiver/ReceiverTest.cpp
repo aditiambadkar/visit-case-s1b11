@@ -21,6 +21,8 @@ void printSenderData()
     fin.close();
 }
 
+Receiver obj;
+
 TEST_CASE("Average footfalls per hour day wise") {
     printSenderData();
     REQUIRE(1 == 1);
