@@ -17,18 +17,16 @@ Receiver::Receiver(int dy, int dt, int m, int y, float wa) : day(dy), date(dt), 
 
 Receiver::Receiver(int i, int hr, int min, int sec, int dy, int dt, int mon, int yr) : id(i), hour(hr), minute(min), second(sec), day(dy), date(dt), month(mon), year(yr) {}
 
-string Receiver::readSenderData()
+vector<string> Receiver::readSenderData()
 {
-	string testBuffer;
+	vector<string> testBuffer;
 	string footfallRecordString;
 	getline(cin, footfallRecordString);
-	testBuffer += footfallRecordString;
-	testBuffer += "\n";
+	testbuffer.push_back(footfallRecordString);
 	cout << footfallRecordString << endl;
 	while (getline(cin, footfallRecordString))
 	{
-		testBuffer += footfallRecordString;
-		testBuffer += "\n";
+		testbuffer.push_back(footfallRecordString);
 		cout << footfallRecordString << endl;
 		storeFootfallData(footfallRecordString);
 	}
