@@ -22,11 +22,11 @@ vector<string> Receiver::readSenderData()
 	vector<string> testBuffer;
 	string footfallRecordString;
 	getline(cin, footfallRecordString);
-	testbuffer.push_back(footfallRecordString);
+	testBuffer.push_back(footfallRecordString);
 	cout << footfallRecordString << endl;
 	while (getline(cin, footfallRecordString))
 	{
-		testbuffer.push_back(footfallRecordString);
+		testBuffer.push_back(footfallRecordString);
 		cout << footfallRecordString << endl;
 		storeFootfallData(footfallRecordString);
 	}
