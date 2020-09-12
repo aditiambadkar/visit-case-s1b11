@@ -2,7 +2,7 @@
 
 #include "catch.hpp"
 #include "ReceiverHeader.h"
-
+using namespace std;
 TEST_CASE("Average footfalls per hour day wise") {
     Receiver obj;
     REQUIRE(obj.testAverageFootfallsPerHourDaily() == true);
