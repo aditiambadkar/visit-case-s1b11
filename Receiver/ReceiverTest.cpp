@@ -46,9 +46,6 @@ string printSenderData()
 
 TEST_CASE("Average footfalls per hour day wise") {
     string senderDataBuffer = printSenderData();
-    obj.readSenderData();
-    ifstream fin("test-data/Test Read.csv");
-    string testSenderDataBuffer((istreambuf_iterator<char>(fin)), istreambuf_iterator<char>());
-    fin.close();
-    REQUIRE(senderDataBuffer == testSenderDataBuffer);
+    string testBuffer = obj.readSenderData();
+    REQUIRE(senderDataBuffer == testBuffer);
 }
