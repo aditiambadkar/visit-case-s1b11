@@ -17,20 +17,20 @@ Receiver::Receiver(int dy, int dt, int m, int y, float wa) : day(dy), date(dt), 
 
 Receiver::Receiver(int i, int hr, int min, int sec, int dy, int dt, int mon, int yr) : id(i), hour(hr), minute(min), second(sec), day(dy), date(dt), month(mon), year(yr) {}
 
-string Receiver::readSenderData()
+void Receiver::readSenderData()
 {
-	string senderDataBuffer = "";
+	ofstream fout("test-data/Test Read.csv");
 	string footfallRecordString;
 	getline(cin, footfallRecordString);
+	fout << footfallRecordString << "\n";
 	cout << footfallRecordString << endl;
-	senderDataBuffer = senderDataBuffer + footfallRecordString;
 	while (getline(cin, footfallRecordString))
 	{
-		senderDataBuffer = senderDataBuffer + footfallRecordString;
+		fout << footfallRecordString << "\n";
 		cout << footfallRecordString << endl;
 		storeFootfallData(footfallRecordString);
 	}
-	return senderDataBuffer;
+	fout.close();
 }
 
 void Receiver::storeFootfallData(const string& footfallRecordString)
