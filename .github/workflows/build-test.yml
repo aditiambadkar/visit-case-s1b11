@@ -21,7 +21,7 @@ jobs:
       run: g++ -Wall -Wextra -Werror --coverage -o SenderExe Sender/Sender.cpp
       
     - name: build Receiver
-      run: g++ -Wall -Wextra -Werror --coverage -o ReceiverExe Receiver/Receiver.cpp
+      run: g++ -Wall -Wextra -Werror --coverage -o ReceiverTestExe Receiver/*.cpp
       
     - name: build ReceiverTest
       run: g++ -Wall -Wextra -Werror --coverage -o ReceiverTest Receiver/ReceiverTest.cpp
@@ -30,7 +30,7 @@ jobs:
       run: cppcheck --enable=all --error-exitcode=1 .
       
     - name: run
-      run: ./SenderExe | ./ReceiverExe
+      run: ./ReceiverTestExe
     
     - name: coverage report Sender
       run: gcov -r Sender/Sender.cpp
