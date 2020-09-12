@@ -24,7 +24,7 @@ public:
 	Receiver(int, int, int, float);
 	Receiver(int, int, int, int, float);
 	Receiver(int, int, int, int, int, int, int, int);
-	void readSenderData();
+	vector<Receiver> readSenderData();
 	void storeFootfallData(const string&);
 	void averageFootfallsPerHourDaily();
 	void displayHourlyAverageDailyData(vector<Receiver>);
