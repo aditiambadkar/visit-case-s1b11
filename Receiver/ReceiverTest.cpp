@@ -9,6 +9,21 @@
 using namespace std;
 
 vector<Receiver> senderData;
+Receiver obj;
+
+void createSenderDataVector(const string& footfallRecordString)
+{
+	vector<int> footfallRecord;
+	string footfallElement;
+	stringstream footfallStream(footfallRecordString);
+	while (getline(footfallStream, footfallElement, ','))
+	{
+		footfallRecord.push_back(stoi(footfallElement));
+	}
+	cout << footfallRecord.size() << endl;
+	Receiver receiverObj(footfallRecord[0], footfallRecord[1], footfallRecord[2], footfallRecord[3], footfallRecord[4], footfallRecord[5], footfallRecord[6], footfallRecord[7]);
+	senderData.push_back(receiverObj);
+}
 
 void printSenderData()
 {
@@ -25,24 +40,8 @@ void printSenderData()
     fin.close();
 }
 
-void createSenderDataVector(const string& footfallRecordString)
-{
-	vector<int> footfallRecord;
-	string footfallElement;
-	stringstream footfallStream(footfallRecordString);
-	while (getline(footfallStream, footfallElement, ','))
-	{
-		footfallRecord.push_back(stoi(footfallElement));
-	}
-	cout << footfallRecord.size() << endl;
-	Receiver receiverObj(footfallRecord[0], footfallRecord[1], footfallRecord[2], footfallRecord[3], footfallRecord[4], footfallRecord[5], footfallRecord[6], footfallRecord[7]);
-	senderData.push_back(receiverObj);
-}
-
-Receiver obj;
-
 TEST_CASE("Average footfalls per hour day wise") {
     printSenderData();
-    vector<Receiver> testSenderData = obj.readSenderData()
+    vector<Receiver> testSenderData = obj.readSenderData();
     REQUIRE(testSenderData == senderData);
 }
