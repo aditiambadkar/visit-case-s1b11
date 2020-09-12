@@ -19,16 +19,14 @@ Receiver::Receiver(int i, int hr, int min, int sec, int dy, int dt, int mon, int
 
 string Receiver::readSenderData()
 {
-	string senderDataBuffer = "hello";
+	string senderDataBuffer;
 	string footfallRecordString;
 	getline(cin, footfallRecordString);
 	cout << footfallRecordString << endl;
 	senderDataBuffer += footfallRecordString;
-	senderDataBuffer += "\n";
 	while (getline(cin, footfallRecordString))
 	{
 		senderDataBuffer += footfallRecordString;
-		senderDataBuffer += "\n";
 		cout << footfallRecordString << endl;
 		storeFootfallData(footfallRecordString);
 	}
