@@ -4,8 +4,11 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
+
+vector<Receiver> senderData;
 
 void printSenderData()
 {
@@ -16,14 +19,30 @@ void printSenderData()
 	while (getline(fin, footfallRecordString))
 	{
             cout << footfallRecordString << endl;
+	    createSenderDataVector(footfallRecordString);
 	}
     }
     fin.close();
+}
+
+void createSenderDataVector(const string& footfallRecordString)
+{
+	vector<int> footfallRecord;
+	string footfallElement;
+	stringstream footfallStream(footfallRecordString);
+	while (getline(footfallStream, footfallElement, ','))
+	{
+		footfallRecord.push_back(stoi(footfallElement));
+	}
+	cout << footfallRecord.size() << endl;
+	Receiver receiverObj(footfallRecord[0], footfallRecord[1], footfallRecord[2], footfallRecord[3], footfallRecord[4], footfallRecord[5], footfallRecord[6], footfallRecord[7]);
+	senderData.push_back(receiverObj);
 }
 
 Receiver obj;
 
 TEST_CASE("Average footfalls per hour day wise") {
     printSenderData();
-    REQUIRE(1 == 1);
+    vector<Receiver> testSenderData = obj.readSenderData()
+    REQUIRE(testSenderData == senderData);
 }
