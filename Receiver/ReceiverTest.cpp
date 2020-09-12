@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -43,5 +44,5 @@ void printSenderData()
 TEST_CASE("Average footfalls per hour day wise") {
     printSenderData();
     vector<Receiver> testSenderData = obj.readSenderData();
-    REQUIRE(testSenderData == senderData);
+    REQUIRE(equal(senderData.begin(), senderData.end(), testSenderData.begin()));
 }
