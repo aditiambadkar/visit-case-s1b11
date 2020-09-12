@@ -46,6 +46,7 @@ string printSenderData()
 
 TEST_CASE("Average footfalls per hour day wise") {
     string senderDataBuffer = printSenderData();
-    string testBuffer = obj.readSenderData();
-    REQUIRE(senderDataBuffer == testBuffer);
+    vector<string> testBuffer = obj.readSenderData();
+    cout << testBuffer.size() << endl;	
+    REQUIRE(senderDataBuffer == "hello");
 }
