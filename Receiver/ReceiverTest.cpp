@@ -3,19 +3,21 @@
 #include "catch.hpp"
 #include <fstream>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 void printSenderData()
 {
     ifstream fin("test-data/Visit Count Data.csv");
+    string footfallRecordString;
     if (fin.good())
+    {
+	while (getline(fin, footfallRecordString))
 	{
-		while (getline(fin, footfallRecordString))
-	    {
             cout << footfallRecordString << endl;
-	    }
 	}
+    }
     fin.close();
 }
 
