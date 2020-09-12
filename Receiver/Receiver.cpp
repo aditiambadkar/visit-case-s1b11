@@ -22,8 +22,8 @@ string Receiver::readSenderData()
 	string senderDataBuffer = "";
 	string footfallRecordString;
 	getline(cin, footfallRecordString);
-	senderDataBuffer.append(footfallRecordString);
 	cout << footfallRecordString << endl;
+	senderDataBuffer = footfallRecordString;
 	while (getline(cin, footfallRecordString))
 	{
 		cout << footfallRecordString << endl;
