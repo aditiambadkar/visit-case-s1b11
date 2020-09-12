@@ -19,19 +19,21 @@ Receiver::Receiver(int i, int hr, int min, int sec, int dy, int dt, int mon, int
 
 string Receiver::readSenderData()
 {
-	string senderDataBuffer = "";
+	ofstream fout("test-data/Sender Data.csv");
 	string footfallRecordString;
 	getline(cin, footfallRecordString);
 	cout << footfallRecordString << endl;
-	senderDataBuffer.append(footfallRecordString);
-	senderDataBuffer.append("\n");
+	fout << footfallRecordString << "\n";
 	while (getline(cin, footfallRecordString))
 	{
-		senderDataBuffer.append(footfallRecordString);
-		senderDataBuffer.append("\n");
+		fout << footfallRecordString << "\n";
 		cout << footfallRecordString << endl;
 		storeFootfallData(footfallRecordString);
 	}
+	fout.close();
+	ifstream fin("test-data/Sender Data.csv");
+    	string senderDataBuffer((istreambuf_iterator<char>(fin)), istreambuf_iterator<char>());
+	fin.close();
 	return senderDataBuffer;
 }
 
