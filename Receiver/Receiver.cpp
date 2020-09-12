@@ -17,7 +17,7 @@ Receiver::Receiver(int dy, int dt, int m, int y, float wa) : day(dy), date(dt), 
 
 Receiver::Receiver(int i, int hr, int min, int sec, int dy, int dt, int mon, int yr) : id(i), hour(hr), minute(min), second(sec), day(dy), date(dt), month(mon), year(yr) {}
 
-void Receiver::readSenderData()
+vector<Receiver> Receiver::readSenderData()
 {
 	string footfallRecordString;
 	getline(cin, footfallRecordString);
@@ -27,6 +27,7 @@ void Receiver::readSenderData()
 		cout << footfallRecordString << endl;
 		storeFootfallData(footfallRecordString);
 	}
+	return footfallData;
 }
 
 void Receiver::storeFootfallData(const string& footfallRecordString)
