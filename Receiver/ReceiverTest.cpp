@@ -46,7 +46,6 @@ TEST_CASE("Average footfalls per hour day wise") {
     obj.displayHourlyAverageDailyData(result);
     ifstream fin1("test-data/Average Footfalls Hourly Test.csv");
     string testDataBuffer((istreambuf_iterator<char>(fin1)), istreambuf_iterator<char>());
-    testDataBuffer += "\n";
     fin1.close();
     ifstream fin2("test-data/Average Footfalls Hourly.csv");
     string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
