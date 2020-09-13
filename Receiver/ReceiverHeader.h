@@ -7,7 +7,6 @@ using namespace std;
 class Receiver
 {
 private:
-	vector<Receiver> footfallData;
 	int id = 0;
 	int hour = 0;
 	int minute = 0;
@@ -25,27 +24,16 @@ public:
 	Receiver(int, int, int, int, float);
 	Receiver(int, int, int, int, int, int, int, int);
 	vector<Receiver> readSenderData();
-	void storeFootfallData(const string&);
-	/*void averageFootfallsPerHourDaily();
+	vector<Receiver> storeFootfallData(const string&, vector<Receiver>);
+	vector<Receiver> averageFootfallsPerHourDaily(vector<Receiver>);
 	void displayHourlyAverageDailyData(vector<Receiver>);
 	void displayDailyAverageWeeklyData(vector<Receiver>);
-	void averageDailyFootfallsWeekly();
+	vector<Receiver> averageDailyFootfallsWeekly(vector<Receiver>);
 	int setFlagStatus(int);
-	void peakDailyFootfallLastMonth();
-	vector<Receiver> getLastMonthFootfallData();
+	vector<Receiver> peakDailyFootfallLastMonth(vector<Receiver>);
+	vector<Receiver> getLastMonthFootfallData(vector<Receiver>);
 	vector<Receiver> getPeakDailyFootfallsLastMonth(vector<Receiver>);
 	void displayPeakDailyFootfallLastMonth(vector<Receiver>);
 	
-	bool testAverageFootfallsPerHourDaily();*/
+	bool testAverageFootfallsPerHourDaily();
 };
-
-void averageFootfallsPerHourDaily(vector<Receiver>);
-void displayHourlyAverageDailyData(vector<Receiver>);
-void displayDailyAverageWeeklyData(vector<Receiver>);
-void averageDailyFootfallsWeekly();
-int setFlagStatus(int);
-void peakDailyFootfallLastMonth();
-vector<Receiver> getLastMonthFootfallData();
-vector<Receiver> getPeakDailyFootfallsLastMonth(vector<Receiver>);
-void displayPeakDailyFootfallLastMonth(vector<Receiver>);
-bool testAverageFootfallsPerHourDaily();
