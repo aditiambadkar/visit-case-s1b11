@@ -42,6 +42,14 @@ void printSenderData()
 
 TEST_CASE("Average footfalls per hour day wise") {
     printSenderData();
-    cout<<senderData.size()<<endl;
-    REQUIRE(1 == 1);
+    vector<Receiver> result = obj.averageFootfallsPerHourDaily(senderData);
+    obj.displayHourlyAverageDailyData(result);
+    ifstream fin1("test-data/Average Footfalls Hourly Test.csv");
+    string testDataBuffer((istreambuf_iterator<char>(fin1)), istreambuf_iterator<char>());
+    testDataBuffer += "\n";
+    fin1.close();
+    ifstream fin2("test-data/Average Footfalls Hourly.csv");
+    string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
+    fin2.close();
+    REQUIRE(testDataBuffer == actualDataBuffer);
 }
