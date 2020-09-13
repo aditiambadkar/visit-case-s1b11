@@ -26,14 +26,14 @@ void createSenderDataVector(const string& footfallRecordString)
 	senderData.push_back(receiverObj);
 }
 
-string printSenderData()
+void printSenderData()
 {
     ifstream fin("test-data/Visit Count Data.csv");
-    string senderDataBuffer((istreambuf_iterator<char>(fin)), istreambuf_iterator<char>());
-    senderDataBuffer += "\n";
     string footfallRecordString;
     if (fin.good())
     {
+	getline(fin, footfallRecordString);
+	cout<<footfallRecordString<<endl;
 	while (getline(fin, footfallRecordString))
 	{
             cout << footfallRecordString << endl;
@@ -41,7 +41,6 @@ string printSenderData()
 	}
     }
     fin.close();
-    return senderDataBuffer;
 }
 
 TEST_CASE("Average footfalls per hour day wise") {
