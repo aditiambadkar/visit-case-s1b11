@@ -24,9 +24,9 @@ public:
 	Receiver(int, int, int, float);
 	Receiver(int, int, int, int, float);
 	Receiver(int, int, int, int, int, int, int, int);
-	void readSenderData();
+	vector<Receiver> readSenderData();
 	void storeFootfallData(const string&);
-	void averageFootfallsPerHourDaily();
+	/*void averageFootfallsPerHourDaily();
 	void displayHourlyAverageDailyData(vector<Receiver>);
 	void displayDailyAverageWeeklyData(vector<Receiver>);
 	void averageDailyFootfallsWeekly();
@@ -36,5 +36,16 @@ public:
 	vector<Receiver> getPeakDailyFootfallsLastMonth(vector<Receiver>);
 	void displayPeakDailyFootfallLastMonth(vector<Receiver>);
 	
-	bool testAverageFootfallsPerHourDaily();
+	bool testAverageFootfallsPerHourDaily();*/
 };
+
+void averageFootfallsPerHourDaily(vector<Receiver>);
+void displayHourlyAverageDailyData(vector<Receiver>);
+void displayDailyAverageWeeklyData(vector<Receiver>);
+void averageDailyFootfallsWeekly();
+int setFlagStatus(int);
+void peakDailyFootfallLastMonth();
+vector<Receiver> getLastMonthFootfallData();
+vector<Receiver> getPeakDailyFootfallsLastMonth(vector<Receiver>);
+void displayPeakDailyFootfallLastMonth(vector<Receiver>);
+bool testAverageFootfallsPerHourDaily();
