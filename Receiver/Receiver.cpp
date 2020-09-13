@@ -184,7 +184,7 @@ vector<Receiver> Receiver::getLastMonthFootfallData(vector<Receiver> footfallDat
 	return lastMonthFootfallData;
 }
 
-vector<Receiver> getPeakDailyFootfallsLastMonth(vector<Receiver> dailyFootfallLastMonthData)
+vector<Receiver> Receiver::getPeakDailyFootfallsLastMonth(vector<Receiver> dailyFootfallLastMonthData)
 {
 	sort(dailyFootfallLastMonthData.begin(), dailyFootfallLastMonthData.end(), [](const Receiver& firstObj, const Receiver& secondObj)
 	{
@@ -202,7 +202,7 @@ vector<Receiver> getPeakDailyFootfallsLastMonth(vector<Receiver> dailyFootfallLa
 	return peakDailyFootfallsLastMonth;
 }
 
-void displayPeakDailyFootfallLastMonth(vector<Receiver> peakDailyFootfallsLastMonthData)
+void Receiver::displayPeakDailyFootfallLastMonth(vector<Receiver> peakDailyFootfallsLastMonthData)
 {
 	cout<<"Date "<<"Month "<<"Year "<<"Peak Count"<<endl;
 	for(unsigned int i = 0; i < peakDailyFootfallsLastMonthData.size(); i++)
