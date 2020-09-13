@@ -19,18 +19,19 @@ Receiver::Receiver(int i, int hr, int min, int sec, int dy, int dt, int mon, int
 
 vector<Receiver> Receiver::readSenderData()
 {
+	vector<Receiver> footfallData;
 	string footfallRecordString;
 	getline(cin, footfallRecordString);
 	cout << footfallRecordString << endl;
 	while (getline(cin, footfallRecordString))
 	{
 		cout << footfallRecordString << endl;
-		storeFootfallData(footfallRecordString);
+		footfallData = storeFootfallData(footfallRecordString, footfallData);
 	}
-	return footfallRecord;
+	return footfallData;
 }
 
-void Receiver::storeFootfallData(const string& footfallRecordString)
+vector<Receiver> Receiver::storeFootfallData(const string& footfallRecordString, vector<Receiver> footfallData)
 {
 	vector<int> footfallRecord;
 	string footfallElement;
@@ -44,9 +45,10 @@ void Receiver::storeFootfallData(const string& footfallRecordString)
 	cout << footfallRecord.size() << endl;
 	Receiver receiverObj(footfallRecord[0], footfallRecord[1], footfallRecord[2], footfallRecord[3], footfallRecord[4], footfallRecord[5], footfallRecord[6], footfallRecord[7]);
 	footfallData.push_back(receiverObj);
+	return footfallData;
 }
 
-vector<Receiver> averageFootfallsPerHourDaily(vector<Receiver> footfallData)
+vector<Receiver> Receiver::averageFootfallsPerHourDaily(vector<Receiver> footfallData)
 {
 	vector<Receiver> hourlyAverageDailyData;
 	Receiver receiverObj(footfallData[0].date, footfallData[0].month, footfallData[0].year, 0);
@@ -73,14 +75,14 @@ vector<Receiver> averageFootfallsPerHourDaily(vector<Receiver> footfallData)
 	return hourlyAverageDailyData;
 }
 
-int setFlagStatus(int day)
+int Receiver::setFlagStatus(int day)
 {
 	if(day == 1)
 		return 0;
 	return 1;
 }
 
-void averageDailyFootfallsWeekly()
+vector<Receiver> Receiver::averageDailyFootfallsWeekly(vector<Receiver> footfallData)
 {
 	vector<Receiver> dailyAverageWeeklyData;
 	Receiver receiverObj(footfallData[0].day, footfallData[0].date, footfallData[0].month, footfallData[0].year, 0);
@@ -109,11 +111,11 @@ void averageDailyFootfallsWeekly()
 	receiverObj.weeklyAverage = receiverObj.weeklyAverage / 7;
 	dailyAverageWeeklyData.push_back(receiverObj);
 	
-	displayDailyAverageWeeklyData(dailyAverageWeeklyData);
+	return dailyAverageWeeklyData;
 }
 
 
-void displayHourlyAverageDailyData(vector<Receiver> hourlyAverageDailyData)
+void Receiver::displayHourlyAverageDailyData(vector<Receiver> hourlyAverageDailyData)
 {
 	ofstream fout("test-data/Average Footfalls Hourly.csv");
 	cout<<"Date "<<"Month "<<"Year "<<" Hourly Avg"<<endl;
@@ -129,7 +131,7 @@ void displayHourlyAverageDailyData(vector<Receiver> hourlyAverageDailyData)
 	fout.close();
 }
 
-void displayDailyAverageWeeklyData(vector<Receiver> dailyAverageWeeklyData)
+void Receiver::displayDailyAverageWeeklyData(vector<Receiver> dailyAverageWeeklyData)
 {
 	cout<<"Date "<<"Month "<<"Year "<<" Weekly Avg"<<endl;
 	for(unsigned int i = 0; i < dailyAverageWeeklyData.size(); i++)
@@ -138,10 +140,10 @@ void displayDailyAverageWeeklyData(vector<Receiver> dailyAverageWeeklyData)
 	}
 }
 
-void peakDailyFootfallLastMonth()
+vector<Receiver> Receiver::peakDailyFootfallLastMonth(vector<Receiver> footfallData)
 {
 	vector<Receiver> dailyFootfallLastMonthData;
-	vector<Receiver> footfallLastMonthData = getLastMonthFootfallData();
+	vector<Receiver> footfallLastMonthData = getLastMonthFootfallData(footfallData);
 	Receiver receiverObj(footfallLastMonthData[0].date, footfallLastMonthData[0].month, footfallLastMonthData[0].year, 0);
 	for(unsigned int i = 0; i < footfallLastMonthData.size(); i++)
 	{
@@ -163,10 +165,10 @@ void peakDailyFootfallLastMonth()
 	
 	vector<Receiver> peakDailyFootfallsLastMonthData = getPeakDailyFootfallsLastMonth(dailyFootfallLastMonthData);
 	
-	displayPeakDailyFootfallLastMonth(peakDailyFootfallsLastMonthData);
+	return peakDailyFootfallsLastMonthData;
 }
 
-vector<Receiver> getLastMonthFootfallData()
+vector<Receiver> Receiver::getLastMonthFootfallData(vector<Receiver> footfallData)
 {
 	time_t currentTime = time(0);
 	tm *localTime = localtime(&currentTime);
