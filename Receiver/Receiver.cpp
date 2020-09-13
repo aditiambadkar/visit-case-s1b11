@@ -211,11 +211,18 @@ vector<Receiver> Receiver::getPeakDailyFootfallsLastMonth(vector<Receiver> daily
 
 void Receiver::displayPeakDailyFootfallLastMonth(vector<Receiver> peakDailyFootfallsLastMonthData)
 {
+	ofstream fout("test-data/Peak Daily Footfalls Last Month.csv");
 	cout<<"Date "<<"Month "<<"Year "<<"Peak Count"<<endl;
-	for(unsigned int i = 0; i < peakDailyFootfallsLastMonthData.size(); i++)
+	if(fout.is_open())
 	{
-		cout<<peakDailyFootfallsLastMonthData[i].date<<" "<<peakDailyFootfallsLastMonthData[i].month<<" "<<peakDailyFootfallsLastMonthData[i].year<<" "<<peakDailyFootfallsLastMonthData[i].dailyCount<<endl;
+		fout << "Date" << "," << "Month" << "," << "Year" << "," << "PeakCount" <<"\n";
+		for(unsigned int i = 0; i < peakDailyFootfallsLastMonthData.size(); i++)
+		{
+			cout<<peakDailyFootfallsLastMonthData[i].date<<" "<<peakDailyFootfallsLastMonthData[i].month<<" "<<peakDailyFootfallsLastMonthData[i].year<<" "<<peakDailyFootfallsLastMonthData[i].dailyCount<<endl;
+			fout<<peakDailyFootfallsLastMonthData[i].date<<","<<peakDailyFootfallsLastMonthData[i].month<<","<<peakDailyFootfallsLastMonthData[i].year<<","<<peakDailyFootfallsLastMonthData[i].dailyCount<<"\n";
+		}
 	}
+	fout.close();
 }
 
 /*bool Receiver::testAverageFootfallsPerHourDaily()
