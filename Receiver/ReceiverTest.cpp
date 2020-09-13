@@ -21,7 +21,6 @@ void createSenderDataVector(const string& footfallRecordString)
 	{
 		footfallRecord.push_back(stoi(footfallElement));
 	}
-	cout << footfallRecord.size() << endl;
 	Receiver receiverObj(footfallRecord[0], footfallRecord[1], footfallRecord[2], footfallRecord[3], footfallRecord[4], footfallRecord[5], footfallRecord[6], footfallRecord[7]);
 	senderData.push_back(receiverObj);
 }
@@ -33,10 +32,8 @@ void printSenderData()
     if (fin.good())
     {
 	getline(fin, footfallRecordString);
-	cout<<footfallRecordString<<endl;
 	while (getline(fin, footfallRecordString))
 	{
-            cout << footfallRecordString << endl;
 	    createSenderDataVector(footfallRecordString);
 	}
     }
@@ -44,6 +41,7 @@ void printSenderData()
 }
 
 TEST_CASE("Average footfalls per hour day wise") {
-    printSenderData();	
+    printSenderData();
+    cout<<senderData.size()<<endl;
     REQUIRE(1 == 1);
 }
