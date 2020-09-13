@@ -133,11 +133,18 @@ void Receiver::displayHourlyAverageDailyData(vector<Receiver> hourlyAverageDaily
 
 void Receiver::displayDailyAverageWeeklyData(vector<Receiver> dailyAverageWeeklyData)
 {
+	ofstream fout("test-data/Average Footfalls Weekly.csv");
 	cout<<"Date "<<"Month "<<"Year "<<" Weekly Avg"<<endl;
-	for(unsigned int i = 0; i < dailyAverageWeeklyData.size(); i++)
+	if(fout.is_open())
 	{
-		cout<<dailyAverageWeeklyData[i].date<<" "<<dailyAverageWeeklyData[i].month<<" "<<dailyAverageWeeklyData[i].year<<" "<<dailyAverageWeeklyData[i].weeklyAverage<<endl;
+		fout << "Date" << "," << "Month" << "," << "Year" << "," << "WeeklyAverage" <<"\n";
+		for(unsigned int i = 0; i < dailyAverageWeeklyData.size(); i++)
+		{
+			cout<<dailyAverageWeeklyData[i].date<<" "<<dailyAverageWeeklyData[i].month<<" "<<dailyAverageWeeklyData[i].year<<" "<<dailyAverageWeeklyData[i].weeklyAverage<<endl;
+			fout<<dailyAverageWeeklyData[i].date<<","<<dailyAverageWeeklyData[i].month<<","<<dailyAverageWeeklyData[i].year<<","<<dailyAverageWeeklyData[i].weeklyAverage<<"\n";
+		}
 	}
+	fout.close();
 }
 
 vector<Receiver> Receiver::peakDailyFootfallLastMonth(vector<Receiver> footfallData)
