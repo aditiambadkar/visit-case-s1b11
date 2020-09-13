@@ -64,3 +64,15 @@ TEST_CASE("Average footfalls per day week wise") {
     fin2.close();
     REQUIRE(testDataBuffer == actualDataBuffer);
 }
+
+TEST_CASE("Peak daily footfalls last month") {
+    vector<Receiver> result = obj.peakDailyFootfallLastMonth(senderData);
+    obj.displayPeakDailyFootfallLastMonth(result);
+    ifstream fin1("test-data/test-data/Peak Daily Footfalls Last Month Test.csv");
+    string testDataBuffer((istreambuf_iterator<char>(fin1)), istreambuf_iterator<char>());
+    fin1.close();
+    ifstream fin2("test-data/test-data/Peak Daily Footfalls Last Month.csv");
+    string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
+    fin2.close();
+    REQUIRE(testDataBuffer == actualDataBuffer);
+}
