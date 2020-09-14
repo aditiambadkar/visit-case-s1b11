@@ -49,6 +49,42 @@ TEST_CASE("Print no data if there is no sender data") {
     REQUIRE(senderDataSize == 0);
 }
 
+TEST_CASE("Print no data for Average footfalls per hour day wise") {
+    vector<Receiver> result = obj.averageFootfallsPerHourDaily(senderData);
+    obj.displayHourlyAverageDailyData(result);
+    ifstream fin1("test-data/Average Footfalls Hourly Test.csv");
+    string testDataBuffer((istreambuf_iterator<char>(fin1)), istreambuf_iterator<char>());
+    fin1.close();
+    ifstream fin2("test-data/Average Footfalls Hourly.csv");
+    string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
+    fin2.close();
+    REQUIRE(testDataBuffer != actualDataBuffer);
+}
+
+TEST_CASE("Print no data for Average footfalls per day week wise") {
+    vector<Receiver> result = obj.averageDailyFootfallsWeekly(senderData);
+    obj.displayDailyAverageWeeklyData(result);
+    ifstream fin1("test-data/Average Footfalls Weekly Test.csv");
+    string testDataBuffer((istreambuf_iterator<char>(fin1)), istreambuf_iterator<char>());
+    fin1.close();
+    ifstream fin2("test-data/Average Footfalls Weekly.csv");
+    string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
+    fin2.close();
+    REQUIRE(testDataBuffer != actualDataBuffer);
+}
+
+TEST_CASE("Print no data for Peak daily footfalls last month") {
+    vector<Receiver> result = obj.peakDailyFootfallLastMonth(senderData);
+    obj.displayPeakDailyFootfallLastMonth(result);
+    ifstream fin1("test-data/test-data/Peak Daily Footfalls Last Month Test.csv");
+    string testDataBuffer((istreambuf_iterator<char>(fin1)), istreambuf_iterator<char>());
+    fin1.close();
+    ifstream fin2("test-data/test-data/Peak Daily Footfalls Last Month.csv");
+    string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
+    fin2.close();
+    REQUIRE(testDataBuffer != actualDataBuffer);
+}
+
 TEST_CASE("Read Sender Data") {
     string fileName = "test-data/Visit Count Data.csv";
     int senderDataSize = printSenderData(fileName);
