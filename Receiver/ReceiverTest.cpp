@@ -25,9 +25,10 @@ void createSenderDataVector(const string& footfallRecordString)
 	senderData.push_back(receiverObj);
 }
 
-int printSenderData()
+int printSenderData(const string& fileName)
 {
-    ifstream fin("test-data/Visit Count Data.csv");
+    //ifstream fin("test-data/Visit Count Data.csv");
+    ifstream fin(fileName);
     string footfallRecordString;
     if (fin.good())
     {
@@ -42,7 +43,8 @@ int printSenderData()
 }
 
 TEST_CASE("Read Sender Data") {
-    int senderDataSize = printSenderData();
+    string fileName = "test-data/Visit Count Data.csv";
+    int senderDataSize = printSenderData(fileName);
     REQUIRE(senderDataSize != 0);
 }
 
