@@ -25,7 +25,7 @@ void createSenderDataVector(const string& footfallRecordString)
 	senderData.push_back(receiverObj);
 }
 
-void printSenderData()
+int printSenderData()
 {
     ifstream fin("test-data/Visit Count Data.csv");
     string footfallRecordString;
@@ -38,10 +38,15 @@ void printSenderData()
 	}
     }
     fin.close();
+    return senderData.size();
+}
+
+TEST_CASE("Read Sender Data") {
+    int senderDataSize = printSenderData();
+    REQUIRE(senderDataSize != 0);
 }
 
 TEST_CASE("Average footfalls per hour day wise") {
-    printSenderData();
     vector<Receiver> result = obj.averageFootfallsPerHourDaily(senderData);
     obj.displayHourlyAverageDailyData(result);
     ifstream fin1("test-data/Average Footfalls Hourly Test.csv");
