@@ -111,3 +111,8 @@ TEST_CASE("Peak daily footfalls last month") {
     fin2.close();
     REQUIRE(testDataBuffer == actualDataBuffer);
 }
+
+TEST_CASE("when day is 1 return 0 else return 1") {
+    REQUIRE(setFlagStatus(1) == 0);
+    REQUIRE(setFlagStatus(3) == 1);	
+}
