@@ -224,18 +224,3 @@ void Receiver::displayPeakDailyFootfallLastMonth(vector<Receiver> peakDailyFootf
 	}
 	fout.close();
 }
-
-/*
-int main()
-{
-	Receiver receiverObj;
-	
-	cout << "In receiver main" << endl;
-	
-	receiverObj.readSenderData();
-	receiverObj.averageFootfallsPerHourDaily();
-	receiverObj.testAverageFootfallsPerHourDaily();
-	receiverObj.averageDailyFootfallsWeekly();
-	receiverObj.peakDailyFootfallLastMonth();
-	return 0;
-}*/
