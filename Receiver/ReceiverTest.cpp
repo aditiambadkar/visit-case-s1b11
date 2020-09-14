@@ -42,6 +42,13 @@ int printSenderData(const string& fileName)
     return senderData.size();
 }
 
+TEST_CASE("Print no data if there is no sender data") {
+    string fileName = "test.csv";
+    int senderDataSize = printSenderData(fileName);
+    cout<<"No data"<<endl;
+    REQUIRE(senderDataSize == 0);
+}
+
 TEST_CASE("Read Sender Data") {
     string fileName = "test-data/Visit Count Data.csv";
     int senderDataSize = printSenderData(fileName);
