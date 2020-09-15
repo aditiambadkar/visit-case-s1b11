@@ -116,3 +116,45 @@ TEST_CASE("when day is 1 return 0 else return 1") {
     REQUIRE(obj.setFlagStatus(1) == 0);
     REQUIRE(obj.setFlagStatus(3) == 1);	
 }
+
+TEST_CASE("Read Sender Data (Data 2)") {
+    string fileName = "test-data/Visit Count Data 2.csv";
+    int senderDataSize = printSenderData(fileName);
+    REQUIRE(senderDataSize != 0);
+}
+
+TEST_CASE("(Data 2) Average footfalls per hour day wise") {
+    vector<Receiver> result = obj.averageFootfallsPerHourDaily(senderData);
+    obj.displayHourlyAverageDailyData(result);
+    ifstream fin1("test-data/Average Footfalls Hourly Test 2.csv");
+    string testDataBuffer((istreambuf_iterator<char>(fin1)), istreambuf_iterator<char>());
+    fin1.close();
+    ifstream fin2("test-data/Average Footfalls Hourly.csv");
+    string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
+    fin2.close();
+    REQUIRE(testDataBuffer == actualDataBuffer);
+}
+
+TEST_CASE("(Data 2) Average footfalls per day week wise") {
+    vector<Receiver> result = obj.averageDailyFootfallsWeekly(senderData);
+    obj.displayDailyAverageWeeklyData(result);
+    ifstream fin1("test-data/Average Footfalls Weekly Test 2.csv");
+    string testDataBuffer((istreambuf_iterator<char>(fin1)), istreambuf_iterator<char>());
+    fin1.close();
+    ifstream fin2("test-data/Average Footfalls Weekly.csv");
+    string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
+    fin2.close();
+    REQUIRE(testDataBuffer == actualDataBuffer);
+}
+
+TEST_CASE("(Data 2) Peak daily footfalls last month") {
+    vector<Receiver> result = obj.peakDailyFootfallLastMonth(senderData);
+    obj.displayPeakDailyFootfallLastMonth(result);
+    ifstream fin1("test-data/test-data/Peak Daily Footfalls Last Month Test 2.csv");
+    string testDataBuffer((istreambuf_iterator<char>(fin1)), istreambuf_iterator<char>());
+    fin1.close();
+    ifstream fin2("test-data/test-data/Peak Daily Footfalls Last Month.csv");
+    string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
+    fin2.close();
+    REQUIRE(testDataBuffer == actualDataBuffer);
+}
