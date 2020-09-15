@@ -70,7 +70,7 @@ TEST_CASE("Print no data for Peak daily footfalls last month") {
     }
 }
 
-TEST_CASE("Read Sender Data") {
+/*TEST_CASE("Read Sender Data") {
     string fileName = "test-data/Visit Count Data 3.csv";
     int senderDataSize = printSenderData(fileName);
     REQUIRE(senderDataSize != 0);
@@ -110,7 +110,7 @@ TEST_CASE("Peak daily footfalls last month") {
     string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
     fin2.close();
     REQUIRE(testDataBuffer == actualDataBuffer);
-}
+}*/
 
 TEST_CASE("when day is 1 return 0 else return 1") {
     REQUIRE(obj.setFlagStatus(1) == 0);
