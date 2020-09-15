@@ -71,7 +71,7 @@ TEST_CASE("Print no data for Peak daily footfalls last month") {
 }
 
 TEST_CASE("Read Sender Data") {
-    string fileName = "test-data/Visit Count Data.csv";
+    string fileName = "test-data/Visit Count Data 2.csv";
     int senderDataSize = printSenderData(fileName);
     REQUIRE(senderDataSize != 0);
 }
