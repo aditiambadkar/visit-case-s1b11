@@ -86,7 +86,6 @@ TEST_CASE("Average footfalls per hour day wise") {
     string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
     fin2.close();
     REQUIRE(testDataBuffer == actualDataBuffer);
-    remove("test-data/Average Footfalls Hourly.csv");
 }
 
 TEST_CASE("Average footfalls per day week wise") {
@@ -98,8 +97,7 @@ TEST_CASE("Average footfalls per day week wise") {
     ifstream fin2("test-data/Average Footfalls Weekly.csv");
     string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
     fin2.close();
-    REQUIRE(testDataBuffer == actualDataBuffer);
-    remove("test-data/Average Footfalls Weekly.csv");	
+    REQUIRE(testDataBuffer == actualDataBuffer);	
 }
 
 TEST_CASE("Peak daily footfalls last month") {
@@ -112,7 +110,6 @@ TEST_CASE("Peak daily footfalls last month") {
     string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
     fin2.close();
     REQUIRE(testDataBuffer == actualDataBuffer);
-    remove("test-data/test-data/Peak Daily Footfalls Last Month.csv");
 }
 
 TEST_CASE("when day is 1 return 0 else return 1") {
@@ -121,6 +118,7 @@ TEST_CASE("when day is 1 return 0 else return 1") {
 }
 
 TEST_CASE("Read Sender Data (Data 2)") {
+    senderData.clear();
     string fileName = "test-data/Visit Count Data 2.csv";
     int senderDataSize = printSenderData(fileName);
     REQUIRE(senderDataSize != 0);
