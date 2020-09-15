@@ -76,7 +76,6 @@ TEST_CASE("when day is 1 return 0 else return 1") {
 }
 
 TEST_CASE("Read Sender Data (Data 1)") {
-    senderData.clear();
     string fileName = "test-data/Visit Count Data.csv";
     int senderDataSize = printSenderData(fileName);
     REQUIRE(senderDataSize != 0);
